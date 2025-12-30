@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useContext, useState } from "react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -13,12 +14,17 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { FiAlignJustify, FiX } from "react-icons/fi";
+import { ThemeContext } from "@/context/themecontext";
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext)!;
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const isActive = (href: string) => pathname === href || pathname.startsWith(href);
+
   return (
-    <header className="shadow-md">
+    <header className={`shadow-md ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"}`}>
       <nav className="max-w-7xl mx-auto px-4 flex items-center justify-between py-4">
 
         {/* Logo */}
@@ -27,29 +33,57 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Menu */}
-        <NavigationMenu className="hidden lg:flex">
+        <NavigationMenu className="hidden lg:flex font-semibold">
           <NavigationMenuList className="flex items-center gap-6">
 
             {/* News */}
             <NavigationMenuItem>
-              <Link href="/news" passHref legacyBehavior>
-                <NavigationMenuLink className="cursor-pointer">News</NavigationMenuLink>
-              </Link>
+              <NavigationMenuLink asChild>
+                <Link
+                  href="/news"
+                  className={`cursor-pointer ${isActive("/news") ? "text-red-500" : ""}`}
+                >
+                  News
+                </Link>
+              </NavigationMenuLink>
             </NavigationMenuItem>
 
             {/* Services Dropdown */}
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Services</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="rounded-md space-y-2 w-44 p-2 bg-white shadow-md">
-                  <li className="hover:bg-gray-100 px-4 py-2">
-                    <Link href="/services/web">Web Development</Link>
+              <NavigationMenuTrigger className={`${pathname.startsWith("/services") ? "text-red-500" : ""}`}>
+                Services
+              </NavigationMenuTrigger>
+              <NavigationMenuContent className={isDarkMode ? "bg-gray-800 text-white" : "bg-white text-black"}>
+                <ul className="rounded-md space-y-2 w-44 p-2 shadow-md">
+                  <li>
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href="/services/web"
+                        className={`block px-4 py-2 hover:bg-gray-100 ${isActive("/services/web") ? "text-red-500" : ""}`}
+                      >
+                        Web Development
+                      </Link>
+                    </NavigationMenuLink>
                   </li>
-                  <li className="hover:bg-gray-100 px-4 py-2">
-                    <Link href="/services/app">App Development</Link>
+                  <li>
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href="/services/app"
+                        className={`block px-4 py-2 hover:bg-gray-100 ${isActive("/services/app") ? "text-red-500" : ""}`}
+                      >
+                        App Development
+                      </Link>
+                    </NavigationMenuLink>
                   </li>
-                  <li className="hover:bg-gray-100 px-4 py-2">
-                    <Link href="/services/seo">SEO</Link>
+                  <li>
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href="/services/seo"
+                        className={`block px-4 py-2 hover:bg-gray-100 ${isActive("/services/seo") ? "text-red-500" : ""}`}
+                      >
+                        SEO
+                      </Link>
+                    </NavigationMenuLink>
                   </li>
                 </ul>
               </NavigationMenuContent>
@@ -57,16 +91,26 @@ export default function Navbar() {
 
             {/* About */}
             <NavigationMenuItem>
-              <Link href="/about" passHref legacyBehavior>
-                <NavigationMenuLink className="cursor-pointer">About</NavigationMenuLink>
-              </Link>
+              <NavigationMenuLink asChild>
+                <Link
+                  href="/about"
+                  className={`cursor-pointer ${isActive("/about") ? "text-red-500" : ""}`}
+                >
+                  About
+                </Link>
+              </NavigationMenuLink>
             </NavigationMenuItem>
 
             {/* Contact */}
             <NavigationMenuItem>
-              <Link href="/contact" passHref legacyBehavior>
-                <NavigationMenuLink className="cursor-pointer">Contact</NavigationMenuLink>
-              </Link>
+              <NavigationMenuLink asChild>
+                <Link
+                  href="/contact"
+                  className={`cursor-pointer ${isActive("/contact") ? "text-red-500" : ""}`}
+                >
+                  Contact
+                </Link>
+              </NavigationMenuLink>
             </NavigationMenuItem>
 
           </NavigationMenuList>
@@ -74,9 +118,9 @@ export default function Navbar() {
 
         {/* Desktop Right: Dark Mode + Login */}
         <div className="hidden lg:flex items-center gap-4">
-          <div className="inline-flex items-center">
-            <span className="mr-2">Dark Mode</span>
-            <Switch />
+          <div className="inline-flex items-center gap-2">
+            <span>Dark Mode</span>
+            <Switch checked={isDarkMode} onCheckedChange={toggleTheme} />
           </div>
           <Button variant="default">Login</Button>
         </div>
@@ -91,47 +135,73 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden bg-white shadow-md">
+        <div className={`lg:hidden ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"} shadow-md`}>
           <ul className="flex flex-col gap-2 p-4">
 
-            {/* News */}
             <li>
-              <Link href="/newspath" className="block px-4 py-2 hover:bg-gray-100">News</Link>
+              <Link
+                href="/news"
+                className={`block px-4 py-2 hover:bg-gray-100 ${isActive("/news") ? "text-red-500" : ""}`}
+              >
+                News
+              </Link>
             </li>
 
-            {/* Services - Submenu */}
             <li>
-              <div className="px-4 py-2 font-semibold">Services</div>
+              <div className={`px-4 py-2 font-semibold ${pathname.startsWith("/services") ? "text-red-500" : ""}`}>
+                Services
+              </div>
               <ul className="pl-6 flex flex-col gap-2">
                 <li>
-                  <Link href="/services/web" className="block px-4 py-2 hover:bg-gray-100">Web Development</Link>
+                  <Link
+                    href="/services/web"
+                    className={`block px-4 py-2 hover:bg-gray-100 ${isActive("/services/web") ? "text-red-500" : ""}`}
+                  >
+                    Web Development
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/services/app" className="block px-4 py-2 hover:bg-gray-100">App Development</Link>
+                  <Link
+                    href="/services/app"
+                    className={`block px-4 py-2 hover:bg-gray-100 ${isActive("/services/app") ? "text-red-500" : ""}`}
+                  >
+                    App Development
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/services/seo" className="block px-4 py-2 hover:bg-gray-100">SEO</Link>
+                  <Link
+                    href="/services/seo"
+                    className={`block px-4 py-2 hover:bg-gray-100 ${isActive("/services/seo") ? "text-red-500" : ""}`}
+                  >
+                    SEO
+                  </Link>
                 </li>
               </ul>
             </li>
 
-            {/* About */}
             <li>
-              <Link href="/about" className="block px-4 py-2 hover:bg-gray-100">About</Link>
+              <Link
+                href="/about"
+                className={`block px-4 py-2 hover:bg-gray-100 ${isActive("/about") ? "text-red-500" : ""}`}
+              >
+                About
+              </Link>
             </li>
 
-            {/* Contact */}
             <li>
-              <Link href="/contact" className="block px-4 py-2 hover:bg-gray-100">Contact</Link>
+              <Link
+                href="/contact"
+                className={`block px-4 py-2 hover:bg-gray-100 ${isActive("/contact") ? "text-red-500" : ""}`}
+              >
+                Contact
+              </Link>
             </li>
 
-            {/* Dark Mode */}
             <li className="flex items-center gap-2 px-4 py-2">
               <span>Dark Mode</span>
-              <Switch />
+              <Switch checked={isDarkMode} onCheckedChange={toggleTheme} />
             </li>
 
-            {/* Login */}
             <li>
               <Button variant="default" className="w-full mt-2">Login</Button>
             </li>
