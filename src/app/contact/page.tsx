@@ -97,8 +97,8 @@ export default function ContactPage() {
 
         {/* Contact Info Section */}
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6 dark:text-green-400 text-green-600 text-center">যোগাযোগের তথ্য</h2>
-          <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>
+          <h2 className="text-2xl font-bold mb-6 dark:text-green-400 text-green-600 ">যোগাযোগের তথ্য</h2>
+          <div className={`grid grid-cols-1 md:grid-cols-2 text-center gap-6 ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>
             <div className="flex items-center gap-3"><FiPhone className="text-green-500 text-xl" /> +8801571117435</div>
             <div className="flex items-center gap-3"><FiMail className="text-green-500 text-xl" /> nafiul1011@gmail.com</div>
             <div className="flex items-center gap-3"><FiMapPin className="text-green-500 text-xl" /> ঢাকা, বাংলাদেশ</div>

@@ -33,8 +33,8 @@ const NewsDetailsPage = ({ params }: { params: { id: string } }) => {
             <Image
               src={post.imageUrl}
               alt={post.title}
-              width={800}
-              height={450}
+              width={900}
+              height={250}
               className="rounded-md object-cover"
             />
           </div>

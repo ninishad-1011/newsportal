@@ -3,16 +3,18 @@
 import Link from "next/link";
 import {
   FiFacebook,
-  FiTwitter,
   FiInstagram,
   FiLinkedin,
   FiMoon,
   FiSun,
+  FiPhone,
+  FiMail,
+  FiMapPin,
 } from "react-icons/fi";
+import { FaGithub } from "react-icons/fa";
 import { useContext } from "react";
 import { ThemeContext } from "@/context/themecontext";
 import { Button } from "../ui/button";
-import { FaGithub } from "react-icons/fa";
 
 export default function Footer() {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext)!;
@@ -23,17 +25,17 @@ export default function Footer() {
         isDarkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-black"
       } mt-10`}
     >
-      <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
-        {/* Logo & Description */}
-        <div>
+      <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
+
+        {/* Logo */}
+        <div className="flex flex-col items-center md:items-start">
           <h1 className="text-2xl font-bold text-green-500">
             বাংলাদেশ <span className="text-red-600">420</span>
           </h1>
-          <p className="mt-2 text-gray-800 max-w-xs dark:text-white">
-            আমরা বাংলাদেশের ব্যবহারকারীদের জন্য একটি উচ্চমানের ওয়েব ভিত্তিক
-            নিউজপেপার সেবা প্রদান করি।
+          <p className="mt-2 text-gray-700 dark:text-gray-300">
+            আধুনিক ও নির্ভরযোগ্য বাংলা নিউজ প্ল্যাটফর্ম
           </p>
-          {/* Dark Mode Icon */}
+
           <button
             onClick={toggleTheme}
             className="mt-4 p-2 rounded-full bg-gray-700 text-white hover:bg-gray-600"
@@ -42,93 +44,66 @@ export default function Footer() {
           </button>
         </div>
 
-        {/* Important Links */}
+        {/* Quick Links */}
         <div>
           <h2 className="font-semibold text-lg mb-3">দ্রুত লিঙ্ক</h2>
           <ul className="space-y-2">
-            <li>
-              <Link href="/" className="hover:text-green-500">
-                হোম
-              </Link>
-            </li>
-            <li>
-              <Link href="/news" className="hover:text-green-500">
-                সব খবর
-              </Link>
-            </li>
-            <li>
-              <Link href="/services" className="hover:text-green-500">
-                আমাদের সেবা
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" className="hover:text-green-500">
-                আমাদের সম্পর্কে
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className="hover:text-green-500">
-                যোগাযোগ
-              </Link>
-            </li>
+            <li><Link href="/">হোম</Link></li>
+            <li><Link href="/news">সব খবর</Link></li>
+            <li><Link href="/services">সেবা</Link></li>
+            <li><Link href="/about">আমাদের সম্পর্কে</Link></li>
+            <li><Link href="/contact">যোগাযোগ</Link></li>
           </ul>
         </div>
 
-        {/* Newsletter Subscription */}
+        {/* Newsletter */}
         <div>
-          <h2 className="font-semibold text-lg mb-3">
-            নিউজলেটার সাবস্ক্রাইব করুন
-          </h2>
-          <div className="flex gap-2">
+          <h2 className="font-semibold text-lg mb-3">নিউজলেটার</h2>
+          <div className="flex flex-col sm:flex-row gap-2">
             <input
               type="email"
               placeholder="আপনার ইমেইল দিন"
-              className="px-3 py-2 border-1 border-slate-800 rounded-md dark:text-white w-full"
+              className="px-3 py-2 rounded-md border border-slate-800 dark:bg-gray-800 w-full"
             />
-            <Button variant={"default"}> সাবস্ক্রাইব</Button>
+            <Button>Subscribe</Button>
           </div>
         </div>
 
-        {/* Social & Contact Info */}
+        {/* Contact */}
         <div>
-          <h2 className="font-semibold text-lg mb-3 ">যোগাযোগ & সোশ্যাল</h2>
-          <ul className="space-y-2 text-gray-800 dark:text-white">
-            <li>📞 +8801571117435</li>
-            <li>✉ nafiul1011@gmail.com</li>
-            <li>🏢 ঢাকা, বাংলাদেশ</li>
+          <h2 className="font-semibold text-lg mb-3">যোগাযোগ</h2>
+
+          <ul className="space-y-3 text-sm">
+            <li className="flex items-center justify-center md:justify-start gap-2">
+              <FiPhone /> +8801571117435
+            </li>
+            <li className="flex items-center justify-center md:justify-start gap-2">
+              <FiMail /> nafiul1011@gmail.com
+            </li>
+            <li className="flex items-center justify-center md:justify-start gap-2">
+              <FiMapPin /> ঢাকা, বাংলাদেশ
+            </li>
           </ul>
-          <div className="flex items-center gap-4 mt-4 text-xl">
-            <Link
-              href="https://www.facebook.com/picci1011"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-blue-500"
-            >
-              <FiFacebook />
+
+          {/* Social */}
+          <div className="flex justify-center md:justify-start gap-4 mt-4 text-xl">
+            <Link href="https://www.facebook.com/picci1011" target="_blank">
+              <FiFacebook className="hover:text-blue-500" />
             </Link>
-            <Link
-              href="https://github.com/ninishad-1011"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-blue-400"
-            >
-              <FaGithub />
+            <Link href="https://github.com/ninishad-1011" target="_blank">
+              <FaGithub className="hover:text-gray-400" />
             </Link>
-            <Link
-              href="https://www.linkedin.com/in/nafiul1011"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-blue-700"
-            >
-              <FiLinkedin />
+            <Link href="https://www.linkedin.com/in/nafiul1011" target="_blank">
+              <FiLinkedin className="hover:text-blue-600" />
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Copyright */}
-      <div className=" mb-5 border-t border-gray-900 mt-8 pt-4 text-center text-gray-400 text-sm">
-        © 2025 বাংলাদেশ 420. সর্বস্বত্ব সংরক্ষিত।
+      {/* Footer Bottom */}
+      <div className="border-t border-gray-700 py-4 text-center text-sm text-gray-400">
+        © 2025 বাংলাদেশ 420 — সর্বস্বত্ব সংরক্ষিত <br />
+        Developed by <span className="text-green-400">Nafiul Islam</span>
       </div>
     </footer>
   );
