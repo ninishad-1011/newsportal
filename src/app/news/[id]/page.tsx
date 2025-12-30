@@ -1,27 +1,19 @@
 import { News } from "@/types/news";
 import Image from "next/image";
 import Link from "next/link";
+import posts from "@/data/news.json"; // local JSON import
 
 export const dynamicParams = true;
 
-export async function generateStaticParams() {
-  const posts: News[] = await fetch(
-    "http://localhost:3000/data/news.json"
-  ).then((res) => res.json());
-
-  return posts.map((post) => ({
+export function generateStaticParams() {
+  return posts.map((post: News) => ({
     id: post._id.toString(),
   }));
 }
 
-const NewsDetailsPage = async ({ params }: { params: { id: string } }) => {
-  // ✅ fetch full JSON
-  const posts: News[] = await fetch("http://localhost:3000/data/news.json", {
-    cache: "no-store",
-  }).then((res) => res.json());
-
-  // ✅ find single news by id
-  const post = posts.find((item) => item._id === params.id);
+const NewsDetailsPage = ({ params }: { params: { id: string } }) => {
+  // ✅ find single news by id from local JSON
+  const post = posts.find((item: News) => item._id === params.id);
 
   if (!post) {
     return <div className="text-center py-20">News not found</div>;
@@ -52,10 +44,9 @@ const NewsDetailsPage = async ({ params }: { params: { id: string } }) => {
 
         <div className="flex justify-between text-sm mb-4">
           <p>{new Date(post.published_at).toDateString()}</p>
-        <Link href={post.url} target="_blank" className="text-blue-600 hover:underline">
-         সংবাদের মূল উৎস
-        </Link>
-
+          <Link href={post.url} target="_blank" className="text-blue-600 hover:underline">
+            সংবাদের মূল উৎস
+          </Link>
         </div>
 
         <div className="mb-4">

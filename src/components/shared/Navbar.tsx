@@ -11,7 +11,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { Switch } from "@/components/ui/switch";
+
 import { Button } from "@/components/ui/button";
 import { FiAlignJustify, FiX, FiMoon, FiSun } from "react-icons/fi";
 import { ThemeContext } from "@/context/themecontext";

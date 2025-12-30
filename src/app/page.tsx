@@ -1,15 +1,11 @@
-import Image from "next/image";
 import Banner from "@/components/shared/banner";
 import NewsCard from "@/components/shared/newsCart";
 import { News } from "@/types/news";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import NewsList from "@/components/news/newslist";
+import news from "@/data/news.json"; // direct import
 
-const Home = async () => {
-  const data = await fetch('http://localhost:3000/data/news.json');
-  const news = await data.json();
-
+const Home = () => {
   return (
     <div className="py-12">
       <Banner />
@@ -18,7 +14,7 @@ const Home = async () => {
         <h2 className="text-2xl mb-8 font-bold">সর্বশেষ খবর</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {news.slice(0,9).map((item: News) => (
+          {news.slice(0, 9).map((item: News) => (
             <NewsCard key={item._id} item={item} />
           ))}
         </div>

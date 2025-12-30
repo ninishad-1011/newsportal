@@ -1,19 +1,12 @@
 import NewsList from '@/components/news/newslist';
 import { News } from '@/types/news';
+import news from '@/data/news.json'; // direct import
 import React from 'react';
 
-interface NewsListProps {
-  news: News[];
-}
-
-const Page = async () => {
-  // fetch the news
-  const res = await fetch('http://localhost:3000/data/news.json');
-  const news: News[] = await res.json();
-
+const Page = () => {
   return (
     <div className="py-12">
-      <NewsList news={news} />
+      <NewsList news={news as News[]} />
     </div>
   );
 };
