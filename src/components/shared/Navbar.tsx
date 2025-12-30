@@ -109,7 +109,7 @@ export default function Navbar() {
               </NavigationMenuContent>
             </NavigationMenuItem>
 
-            {/* আমাদের সম্পর্কে */}
+            
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
                 <Link
@@ -123,7 +123,7 @@ export default function Navbar() {
               </NavigationMenuLink>
             </NavigationMenuItem>
 
-            {/* যোগাযোগ */}
+          
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
                 <Link
