@@ -32,7 +32,7 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-4 flex items-center justify-between py-4">
         {/* Logo */}
-        <div className="text-xl font-bold">
+        <div className="text-[26px] font-bold">
           <Link href="/">
             <span className="text-green-600">বাংলাদেশ </span>
             <span className="text-red-600">420</span>
@@ -47,7 +47,7 @@ export default function Navbar() {
               <NavigationMenuLink asChild>
                 <Link
                   href="/news"
-                  className={`cursor-pointer ${
+                  className={` text-[16px]  cursor-pointer ${
                     isActive("/news") ? "text-green-600" : ""
                   }`}
                 >
@@ -59,9 +59,7 @@ export default function Navbar() {
             {/* সেবাসমূহ */}
             <NavigationMenuItem>
               <NavigationMenuTrigger
-                className={`${
-                  pathname.startsWith("/services") ? "text-green-500" : ""
-                }`}
+                className={`text-[16px] font-semibold${ pathname.startsWith("/services") ? "text-green-500" : "" }`} 
               >
                 আমাদের সেবা
               </NavigationMenuTrigger>
@@ -75,7 +73,7 @@ export default function Navbar() {
                     <NavigationMenuLink asChild>
                       <Link
                         href="/services/web"
-                        className={`block px-4 py-2 hover:bg-gray-100 ${
+                        className={`block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 ${
                           isActive("/services/web") ? "text-green-500" : ""
                         }`}
                       >
@@ -87,7 +85,7 @@ export default function Navbar() {
                     <NavigationMenuLink asChild>
                       <Link
                         href="/services/app"
-                        className={`block px-4 py-2 hover:bg-gray-100 ${
+                        className={`block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 ${
                           isActive("/services/app") ? "text-green-500" : ""
                         }`}
                       >
@@ -99,7 +97,7 @@ export default function Navbar() {
                     <NavigationMenuLink asChild>
                       <Link
                         href="/services/seo"
-                        className={`block px-4 py-2 hover:bg-gray-100 ${
+                        className={`block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 ${
                           isActive("/services/seo") ? "text-green-500" : ""
                         }`}
                       >
@@ -116,7 +114,7 @@ export default function Navbar() {
               <NavigationMenuLink asChild>
                 <Link
                   href="/about"
-                  className={`cursor-pointer ${
+                  className={` text-[16px] cursor-pointer ${
                     isActive("/about") ? "text-green-500" : ""
                   }`}
                 >
@@ -130,7 +128,7 @@ export default function Navbar() {
               <NavigationMenuLink asChild>
                 <Link
                   href="/contact"
-                  className={`cursor-pointer ${
+                  className={` text-[16px] cursor-pointer ${
                     isActive("/contact") ? "text-green-500" : ""
                   }`}
                 >
@@ -150,7 +148,7 @@ export default function Navbar() {
           >
             {isDarkMode ? <FiMoon /> : <FiSun />}
           </Button>
-          <Button variant="default">লগইন</Button>
+          <Button variant="default" className="text-[16px] font-semibold">লগইন</Button>
         </div>
 
         {/* Mobile Hamburger */}
@@ -261,6 +259,8 @@ export default function Navbar() {
               </Button>
             </li>
           </ul>
+
+      
         </div>
       )}
     </header>

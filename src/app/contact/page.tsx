@@ -21,7 +21,7 @@ export default function ContactPage() {
   };
 
   return (
-    <section className={`mt-10 py-16 rounded-md px-4 ${isDarkMode ? "bg-gray-900 text-white" : "bg-green-100 text-gray-800"}`}>
+    <section className={`mt-10 py-16 rounded-md px-4 ${isDarkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-800"}`}>
       <div className="max-w-3xl mx-auto ">
 
         {/* Form Section */}
@@ -46,7 +46,7 @@ export default function ContactPage() {
                 placeholder="আপনার নাম লিখুন"
                 required
                 className={`w-full border rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-green-500 ${
-                  isDarkMode ? "border-gray-600 bg-gray-900 text-white" : "border-green-600 bg-transparent text-gray-800"
+                  isDarkMode ? "border-gray-600 bg-gray-900 text-white" : "border-gray-600 bg-transparent text-gray-800"
                 }`}
               />
             </div>
@@ -65,7 +65,7 @@ export default function ContactPage() {
                 placeholder="আপনার ইমেইল লিখুন"
                 required
                 className={`w-full border rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-green-500 ${
-                  isDarkMode ? "border-gray-600 bg-gray-900 text-white" : "border-green-600 bg-transparent text-gray-800"
+                  isDarkMode ? "border-gray-600 bg-gray-900 text-white" : "border-gray-600 bg-transparent text-gray-800"
                 }`}
               />
             </div>
@@ -84,7 +84,7 @@ export default function ContactPage() {
                 required
                 rows={5}
                 className={`w-full border rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-green-500 ${
-                  isDarkMode ? "border-gray-600 bg-gray-900 text-white" : "border-green-600 bg-transparent text-gray-800"
+                  isDarkMode ? "border-gray-600 bg-gray-900 text-white" : "border-gray-600 bg-transparent text-gray-800"
                 }`}
               />
             </div>
@@ -99,8 +99,8 @@ export default function ContactPage() {
         <div className="max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold mb-6 dark:text-green-400 text-green-600 text-center">যোগাযোগের তথ্য</h2>
           <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}>
-            <div className="flex items-center gap-3"><FiPhone className="text-green-500 text-xl" /> +880 1234 567890</div>
-            <div className="flex items-center gap-3"><FiMail className="text-green-500 text-xl" /> info@example.com</div>
+            <div className="flex items-center gap-3"><FiPhone className="text-green-500 text-xl" /> +8801571117435</div>
+            <div className="flex items-center gap-3"><FiMail className="text-green-500 text-xl" /> nafiul1011@gmail.com</div>
             <div className="flex items-center gap-3"><FiMapPin className="text-green-500 text-xl" /> ঢাকা, বাংলাদেশ</div>
             <div className="flex items-center gap-3"><FiClock className="text-green-500 text-xl" /> সপ্তাহের প্রতিদিন: ৯ AM – ৬ PM</div>
           </div>

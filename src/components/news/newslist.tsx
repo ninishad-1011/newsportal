@@ -17,31 +17,41 @@ const NewsList = ({ news }: NewsListProps) => {
 
   // ফিল্টার করা নিউজ
   const filteredNews = news.filter((item) => {
-    const matchesSearch = item.title.toLowerCase().includes(search.toLowerCase());
-    const matchesCategory = category === "all" || item.categories.includes(category);
+    const matchesSearch = item.title
+      .toLowerCase()
+      .includes(search.toLowerCase());
+    const matchesCategory =
+      category === "all" || item.categories.includes(category);
     return matchesSearch && matchesCategory;
   });
 
   return (
     <div>
-      {/* অনুসন্ধান ও ক্যাটেগরি */}
+      
       <div className="flex flex-col md:flex-row gap-4 mb-6">
         <input
           type="text"
           placeholder="খবর অনুসন্ধান করুন..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="border border-green-400 rounded px-4 py-2 flex-1"
+          className="border border-black dark:border-slate-800 rounded px-4 py-2 flex-1"
         />
 
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="border border-green-400 rounded px-4 py-2"
+          className="border border-black dark:border-slate-800 rounded px-4 py-2 
+             bg-white dark:bg-slate-800 text-gray-900 dark:text-white"
         >
-          <option value="all">সব ক্যাটেগরি</option>
+          <option value="all" className="bg-white dark:bg-slate-800">
+            ক্যাটেগরি
+          </option>
           {categories.map((cat) => (
-            <option key={cat} value={cat}>
+            <option
+              key={cat}
+              value={cat}
+              className="bg-white  dark:bg-slate-800"
+            >
               {cat}
             </option>
           ))}

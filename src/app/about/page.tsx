@@ -9,11 +9,16 @@ export default function AboutPage() {
   const { isDarkMode } = useContext(ThemeContext)!;
 
   return (
-    <section className={`py-16 mt-10 rounded-md px-4 ${isDarkMode ? "bg-gray-900 text-white" : "bg-green-100 text-gray-800"}`}>
+    <section className={`py-16 mt-10 rounded-md px-4
+      ${isDarkMode 
+        ? "bg-gray-900 text-white shadow-lg" 
+        : "bg-gray-100"}
+    `}>
       <div className="max-w-5xl mx-auto">
 
         {/* Heading */}
-        <h1 className={`text-4xl font-bold text-center mb-6 ${isDarkMode ? "text-green-400" : "text-green-600"}`}>
+        <h1 className={`text-4xl font-bold text-center mb-6
+          ${isDarkMode ? "text-green-400" : "text-green-600"}`}>
           <span className={isDarkMode ? "text-green-400" : "text-green-600"}>বাংলাদেশ</span>{" "}
           <span className={isDarkMode ? "text-red-400" : "text-red-600"}>420</span>
         </h1>
@@ -47,7 +52,7 @@ export default function AboutPage() {
         </div>
 
         {/* Mission */}
-        <div className="mt-12 p-6 rounded-lg">
+        <div className="mt-12 p-6 rounded-lg bg-white/20 backdrop-blur-lg border border-white/30 shadow-sm">
           <h2 className={`text-2xl font-bold mb-4 flex items-center gap-2 ${isDarkMode ? "text-green-400" : "text-green-600"}`}>
             <FiTarget /> আমাদের লক্ষ্য
           </h2>
@@ -70,19 +75,18 @@ export default function AboutPage() {
         {/* Owner / Footer Image */}
         <div className="mt-12 flex flex-col items-center text-center">
           <Image
-            src="/image/WhatsApp_Image_2025-12-06_at_00.28.32_0b879863-removebg-preview-Photoroom.png" // এখানে মালিকের image path দিন
+            src="/image/WhatsApp_Image_2025-12-06_at_00.28.32_0b879863-removebg-preview-Photoroom.png"
             alt="Owner"
             width={200}
             height={150}
-            className="rounded-full object-cover"
+            className="rounded-full object-cover shadow-lg"
           />
           <h3 className={`mt-4 text-xl font-semibold ${isDarkMode ? "text-green-400" : "text-green-600"}`}>
             মোঃ নাফিউল ইসলাম নিশাদ
           </h3>
           <p className={`${isDarkMode ? "text-gray-300" : "text-gray-700"} mt-1`}>
-          ফ্রন্ট-এন্ড সফটওয়্যার ডেভেলপার
+            ফ্রন্ট-এন্ড সফটওয়্যার ডেভেলপার
           </p>
-        
         </div>
 
       </div>
