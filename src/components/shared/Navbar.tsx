@@ -118,7 +118,7 @@ export default function Navbar() {
               </Link>
             </li>
 
-            <li className="font-semibold">আমাদের সেবা</li>
+            <li className="font-semibold text-[16px]">আমাদের সেবা</li>
             <li className="pl-4">
               <Link href="/services/web" onClick={handleCloseMenu}>
                 ওয়েব ডেভেলপমেন্ট
